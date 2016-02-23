@@ -1,0 +1,1 @@
+﻿angular.module('myApp', ['ui.bootstrap','trNgGrid']);

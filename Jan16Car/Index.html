@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/trNgGrid.min.css" rel="stylesheet" />
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myCtrl as mc" ng-cloak>
+        <br />
+        <br />
+
+        <select ng-options="y for y in mc.years" ng-model="mc.selected.year" ng-change="mc.getMakes()">
+            {{y}}
+        </select>
+        <select ng-options="mak for mak in mc.makes" ng-model="mc.selected.make" ng-change="mc.getModels()">
+            {{mak}}
+        </select>
+        <select ng-options="mod for mod in mc.models" ng-model="mc.selected.model" ng-change="mc.getTrims()">
+            {{mod}}
+        </select>
+        <select ng-options="t for t in mc.trims" ng-model="mc.selected.trim" ng-change="mc.getCars()">
+            {{t}}
+        </select>
+        <br />
+        <!--<br />
+        Year : {{mc.selected.year}} <br />
+        Make: {{mc.selected.make}}<br />
+        Model: {{mc.selected.model}} <br />
+        Trim: {{mc.selected.trim}} <br />
+    <button ng-click="mc.open(2)"> Info </button>-->
+
+    <table tr-ng-grid="" items="mc.cars" page-items="20">
+        <thead>
+            <tr>
+                <th field-name="model_year" display-name="year"></th>
+                <th field-name="make"></th>
+                <th field-name="model_name" display-name="model"></th>
+                <th field-name="model_trim" display-name="trim"></th>
+
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td><button ng-click="mc.open(gridItem.id)">Info</button></td>
+            </tr>
+        </tbody>
+        <!--<tr ng-repeat="c in car.cars">
+            <td>{{c.model_year}}</td>
+            <td>{{c.make}}</td>
+            <td>{{c.model_name}}</td>
+            <td>{{c.model_trim}}</td>
+
+
+        </tr>-->
+        <!--</tbody>-->
+    </table>
+    <script type="text/ng-template" id="carModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">
+                Title: {{cm.car.car.model_year}} {{cm.car.car.make}} - {{cm.car.car.model_name}} {{cm.car.car.model_trim}}
+                <button class="pull-right btn btn-default" ng-click="cm.cancel()">X</button>
+            </h3>
+        </div>
+        <div class="modal-body">
+            <img ng-src="{{cm.car.image}}" width="300" height="300"/> 
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="cm.ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cm.cancel()">Cancel</button>
+        </div>
+    </script>
+   </div>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="Scripts/trNgGrid.min.js"></script>
+     <script src="App/app.js"></script>
+    <script src="App/myCtrl.js"></script>
+    <script src="App/fakeSvc.js"></script>
+    <script src="App/carSvc.js"></script>
+</body>
+</html>
+
+
+
+
+<!--<h1>
+    Hello Angular !!!
+</h1>
+
+{{ 25 + 25}}
+<br />
+<div style="color: {{mc.selectedColor}}">
+    {{mc.time | date:'medium'}}
+</div>
+<br />
+<button ng-click="mc.click()">Red</button>
+<button ng-click="mc.selectedColor='blue'">Blue</button>
+<button ng-click="mc.selectedColor='green'">Green</button>
+
+<h3>{{mc.name}}</h3>
+
+<input type="text" ng-model="mc.name" />
+
+<div ng-repeat="n in mc.names">
+    {{n}}
+</div>
+<br />
+<select ng-options="a for a in mc.names" ng-model="mc.name">
+    {{a}}
+</select>-->
+
+
+<!--<div ng-controller="myCtrl as mc" ng-cloak>
+
+
+    <h1>Hello Angular !!!</h1>
+    {{ 25 + 25}}
+    <br />
+    <div style="color: {{mc.selectedColor}}">
+        {{mc.time | date:'medium'}}
+    </div>
+    <br />
+    {{mc.name}}
+    <br />
+    {{mc.number}}
+    <br />
+    <input type="text" ng-model="mc.name" placeholder="Name" />
+    <input type="text" ng-model="mc.number" placeholder="Number" />
+    <button ng-click="mc.click()">Increase</button>
+    <br />
+    <button ng-click="mc.col='red'">Red</button>
+    <button ng-click="mc.col='blue'">Blue</button>
+    <button ng-click="mc.col='green'">Green</button>
+
+    <select ng-options="c for c in mc.colors" ng-model="mc.selectedColor">
+        {{c}}
+    </select>
+</div>-->
