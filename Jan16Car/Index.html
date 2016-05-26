@@ -71,9 +71,10 @@
             <hr />
 
             <div><strong>Recalls: </strong>{{cm.car.recalls.Count}}</div>
-            <!--{{ var num = 1; }}-->
+            
             <uib-tabset>
                 <uib-tab index="0" heading="Details">
+                    <br />
                     Year: {{cm.car.car.model_year}} <br />
                     Make: {{cm.car.car.make}} <br />
                     Model: {{cm.car.car.model_name}} <br />
@@ -85,7 +86,8 @@
 
 
                 </uib-tab>
-                <uib-tab index="$index + 1" ng-repeat="result in cm.car.recalls.Results " heading="Recall">
+                <uib-tab index="$index + 1" ng-repeat="result in cm.car.recalls.Results " heading="Recall {{$index + 1}}">
+                    <br />
                     <strong>Manufacturer: </strong>{{result.Manufacturer}} <br />
                     <strong>NHTSACampaignNumber: </strong>{{result.NHTSACampaignNumber}} <br />
                     <strong>NHTSAActionNumber: </strong>{{result.NHTSAActionNumber}} <br />
@@ -98,9 +100,6 @@
                 </uib-tab>
 
             </uib-tabset>
-
-            <hr />
-            <p></p>
 
         </div>
         <!--<div class="modal-body">

@@ -65,8 +65,54 @@
             </h3>
         </div>
         <div class="modal-body">
-            <img ng-src="{{cm.car.image}}" width="300" height="300"/> 
+            <img class="img-responsive" ng-src="{{cm.car.image }}" />
+
+
+            <hr />
+
+            <div><strong>Recalls: </strong>{{cm.car.recalls.Count}}</div>
+            
+            <uib-tabset>
+                <uib-tab index="0" heading="Details">
+                    <br />
+                    Year: {{cm.car.car.model_year}} <br />
+                    Make: {{cm.car.car.make}} <br />
+                    Model: {{cm.car.car.model_name}} <br />
+                    Trim: {{cm.car.car.model_trim}} <br />
+                    Body Style: {{cm.car.car.body_style}} <br />
+                    Engine CC: {{cm.car.car.engine_cc}} <br />
+                    Engine Power: {{cm.car.car.engine_power_ps}} <br />
+                    Cylinders: {{cm.car.car.engine_num_cyl}} <br />
+
+
+                </uib-tab>
+                <uib-tab index="$index + 1" ng-repeat="result in cm.car.recalls.Results " heading="Recall {{$index + 1}}">
+                    <br />
+                    <strong>Manufacturer: </strong>{{result.Manufacturer}} <br />
+                    <strong>NHTSACampaignNumber: </strong>{{result.NHTSACampaignNumber}} <br />
+                    <strong>NHTSAActionNumber: </strong>{{result.NHTSAActionNumber}} <br />
+                    <strong>ReportReceivedDate: </strong>{{result.ReportReceivedDate | date : 'medium'}} <br />
+                    <strong>Component: </strong>{{result.Component}} <br />
+                    <strong>Summary: </strong>{{result.Summary}} <br />
+                    <strong>Consequence: </strong>{{result.Conequence}} <br />
+                    <strong>Remedy: </strong>{{result.Remedy}} <br />
+
+                </uib-tab>
+
+            </uib-tabset>
+
         </div>
+        <!--<div class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <img ng-src="{{cm.car.image}}" width="300" height="300" />
+                </div>
+                <div class="col-md-6">
+
+
+                </div>
+            </div> 
+        </div>-->
         <div class="modal-footer">
             <button class="btn btn-primary" ng-click="cm.ok()">OK</button>
             <button class="btn btn-warning" ng-click="cm.cancel()">Cancel</button>

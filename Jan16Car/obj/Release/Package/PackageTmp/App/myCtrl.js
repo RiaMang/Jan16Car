@@ -55,10 +55,10 @@ app.controller('myCtrl', ['$http','fakeSvc','carSvc','$uibModal',function($http,
     //}
     //scope.getnhtsayears();
     scope.getMakes = function () {
-        carSvc.getMakes(scope.selected).then(function (data) {
-        //$http.get("http://RiaCar.azurewebsites.net/api/cars/GetMakes", {params: {year: scope.selected.year}}).then(function (response) {
+        //carSvc.getMakes(scope.selected).then(function (data) {
+        $http.get("http://RiaCar.azurewebsites.net/api/cars/GetMakes", {params: {year: scope.selected.year}}).then(function (response) {
 
-            scope.makes = data;
+            scope.makes = response.data;
             scope.models = [];
             scope.trims = [];
             scope.selected.make = '';
