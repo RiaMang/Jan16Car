@@ -28,7 +28,7 @@
     }
 
     service.getCars = function (selected) {
-        return $http.get('/api/cars/GetCars', { params: { year: selected.year, make: selected.make, model: selected.model } })
+        return $http.get('/api/cars/GetCars', { params: { year: selected.year, make: selected.make, model: selected.model, trim: selected.trim } })
             .then(function (response) {
             return response.data;
         })

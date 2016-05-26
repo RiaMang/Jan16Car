@@ -24,9 +24,9 @@ app.controller('myCtrl', ['$http','fakeSvc','carSvc','$uibModal',function($http,
 
     scope.getYears = function () {
         //scope.years = ['1999', '2000', '2001', '2002', '2003'];//http://RiaCar.azurewebsites.net
-        //carSvc.getYears().then(function (data) {
-        $http.get("http://RiaCar.azurewebsites.net/api/cars/GetYears").then(function (response) {
-            scope.years = response.data;
+        carSvc.getYears().then(function (data) {
+        //$http.get("http://RiaCar.azurewebsites.net/api/cars/GetYears").then(function (response) {
+            scope.years = data;
             scope.makes = [];
             scope.models = [];
             scope.trims = [];
@@ -38,9 +38,9 @@ app.controller('myCtrl', ['$http','fakeSvc','carSvc','$uibModal',function($http,
     }
 
     scope.getCars = function () {
-        //carSvc.getCars(scope.selected).then(function (data) {
-        $http.post("http://RiaCar.azurewebsites.net/api/cars/GetCars", scope.selected).then(function (response) {
-            scope.cars = response.data;
+        carSvc.getCars(scope.selected).then(function (data) {
+        //$http.post("http://RiaCar.azurewebsites.net/api/cars/GetCars", scope.selected).then(function (response) {
+            scope.cars = data;
         })
     }
     //scope.getnhtsayears = function () {
